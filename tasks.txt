@@ -1,0 +1,2 @@
+ajustar imagem para clicar e expandir
+ajustar botao de apagar para apagar e css
