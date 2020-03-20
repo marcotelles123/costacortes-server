@@ -17,9 +17,10 @@ try {
     console.log('Error happend while connecting to the DB: ', e.message)
 }
 
+
+app.use(cors())
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
-app.use(cors())
 app.use(express.json());
 app.use(bodyParser.json({limit: '10mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
