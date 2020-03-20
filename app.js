@@ -1,6 +1,7 @@
 var express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+var bodyParser = require('body-parser');
 const routes = require('./routes');
 const http = require('http');
 
@@ -15,8 +16,13 @@ try {
 } catch (e) {
     console.log('Error happend while connecting to the DB: ', e.message)
 }
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 app.use(cors())
 app.use(express.json());
+app.use(bodyParser.json({limit: '10mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use(routes);
 
 server.listen(process.env.PORT || 3333);
