@@ -1,6 +1,6 @@
 const Product = require("../models/Product");
 const fs = require("fs");
-const Guid = require("Guid");
+var randomstring = require("randomstring");
 
 module.exports = {
   async index(request, response) {
@@ -31,7 +31,7 @@ module.exports = {
 
     try {
       // var guid = Guid.create();
-      let fileName = Guid.raw();
+      let fileName = randomstring.generate(10);
       let rate = await Product.create(
         {
           name,
